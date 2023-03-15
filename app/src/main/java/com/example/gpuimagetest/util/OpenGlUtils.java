@@ -1,7 +1,24 @@
-package com.example.gpuimagetest;
+/*
+ * Copyright (C) 2012 CyberAgent
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.example.gpuimagetest.util;
 
 import android.graphics.Bitmap;
-import android.hardware.Camera;
+import android.graphics.Bitmap.Config;
+import android.hardware.Camera.Size;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import android.util.Log;
@@ -41,7 +58,7 @@ public class OpenGlUtils {
         return textures[0];
     }
 
-    public static int loadTexture(final IntBuffer data, final Camera.Size size, final int usedTexId) {
+    public static int loadTexture(final IntBuffer data, final Size size, final int usedTexId) {
         int textures[] = new int[1];
         if (usedTexId == NO_TEXTURE) {
             GLES20.glGenTextures(1, textures, 0);
@@ -65,9 +82,9 @@ public class OpenGlUtils {
         return textures[0];
     }
 
-    public static int loadTextureAsBitmap(final IntBuffer data, final Camera.Size size, final int usedTexId) {
+    public static int loadTextureAsBitmap(final IntBuffer data, final Size size, final int usedTexId) {
         Bitmap bitmap = Bitmap
-                .createBitmap(data.array(), size.width, size.height, Bitmap.Config.ARGB_8888);
+                .createBitmap(data.array(), size.width, size.height, Config.ARGB_8888);
         return loadTexture(bitmap, usedTexId);
     }
 

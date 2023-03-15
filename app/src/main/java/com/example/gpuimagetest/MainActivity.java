@@ -7,6 +7,9 @@ import android.graphics.BitmapFactory;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 
+import com.example.gpuimagetest.filter.GPUImage;
+import com.example.gpuimagetest.filter.GPUImageExposureFilter;
+
 public class MainActivity extends AppCompatActivity {
     private GLSurfaceView glSurfaceView;
     private GPUImage gpuImage;
